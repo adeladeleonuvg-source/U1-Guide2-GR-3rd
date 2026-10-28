@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Montano - Interactive Digital Board: Our World 3 Grammar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montanoBlue: '#1269A8',
+                        montanoYellow: '#F7D615',
+                        montanoTeal: '#54887D',
+                        montanoLightBlue: '#88B5C7',
+                        montanoOlive: '#A6B046',
+                        montanoBg: '#F2F5E9'
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F2F5E9;
+        }
+        .board-shadow {
+            box-shadow: 0 10px 25px -3px rgba(18, 105, 168, 0.15), 0 4px 6px -2px rgba(18, 105, 168, 0.05);
+        }
+        /* Custom scrollbar for clean whiteboard look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F2F5E9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #88B5C7;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #54887D;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-800 p-3 sm:p-6 flex flex-col justify-between">
+
+    <!-- MAIN DIGITAL BOARD FRAME -->
+    <div id="board-container" class="w-full max-w-7xl mx-auto bg-white rounded-xl border-4 border-montanoYellow board-shadow flex flex-col overflow-hidden my-auto">
+        
+        <!-- HEADER / NAVIGATION BAR -->
+        <header class="bg-montanoBlue text-white p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 border-b-4 border-montanoYellow">
+            
+            <!-- Logo & Title Section -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+                <div class="flex items-center gap-3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" alt="Colegio Montano Logo" class="w-12 h-12 object-contain bg-white rounded-lg p-1 border-2 border-montanoYellow shadow">
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold tracking-wide">COLEGIO MONTANO</h1>
+                        <p class="text-xs text-montanoLightBlue font-semibold uppercase">Third Grade • Our World 3 Grammar</p>
+                    </div>
+                </div>
+                <!-- Fullscreen Button Mobile -->
+                <button onclick="toggleFullScreen()" class="md:hidden bg-montanoYellow text-gray-900 px-3 py-1.5 rounded-lg font-bold text-xs shadow hover:bg-yellow-400 transition flex items-center gap-1">
+                    <span>⛶</span> Full
+                </button>
+            </div>
+
+            <!-- Horizontal Navigation Tabs -->
+            <nav class="flex flex-wrap items-center justify-center gap-2 w-full md:w-auto">
+                <button onclick="switchTab('theory')" id="btn-theory" class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-white text-montanoBlue shadow transition transform hover:scale-105">
+                    📚 Theory
+                </button>
+                <button onclick="switchTab('examples')" id="btn-examples" class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-montanoTeal text-white shadow transition transform hover:scale-105">
+                    💡 Examples
+                </button>
+                <button onclick="switchTab('exercises')" id="btn-exercises" class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-montanoTeal text-white shadow transition transform hover:scale-105">
+                    ✏️ Exercises
+                </button>
+                <button onclick="switchTab('reflection')" id="btn-reflection" class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-montanoTeal text-white shadow transition transform hover:scale-105">
+                    🧠 Critical Reflection
+                </button>
+                <button onclick="switchTab('evaluation')" id="btn-evaluation" class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-montanoTeal text-white shadow transition transform hover:scale-105">
+                    📝 Evaluation
+                </button>
+            </nav>
+
+            <!-- Fullscreen Button Desktop -->
+            <button onclick="toggleFullScreen()" class="hidden md:flex items-center gap-1.5 bg-montanoYellow text-gray-900 px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm shadow hover:bg-yellow-400 transition">
+                <span>⛶</span> Fullscreen
+            </button>
+        </header>
+
+        <!-- CONTENT WORKSPACE -->
+        <main class="bg-montanoBg p-4 sm:p-8 flex-grow overflow-y-auto max-h-[72vh]">
+            
+            <!-- ================= TAB 1: THEORY ================= -->
+            <section id="tab-theory" class="tab-content space-y-6">
+                <div class="bg-white p-6 rounded-xl border-l-8 border-montanoBlue shadow-sm">
+                    <span class="bg-montanoOlive text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Unit 1 & 2 Core Grammar</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-montanoBlue mt-2 mb-3">Grammar 1: Can for requests and offers & Place Prepositions</h2>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        In this unit, we learn how to politely ask for assistance using <strong>"Can"</strong>, locate places around our town, and give clear directions. Let's review the structures below!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card 1: Requests & Offers -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <h3 class="text-lg font-bold text-montanoTeal mb-3 flex items-center gap-2">
+                            <span>🤝</span> Asking for Help & Requests
+                        </h3>
+                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-200 text-sm font-mono mb-3">
+                            <p class="font-bold text-montanoBlue">Question:</p>
+                            <p>Can you help me? / Sure. How can I help?</p>
+                            <p class="font-bold text-montanoBlue mt-2">Asking for locations:</p>
+                            <p>Where's the [supermarket / museum]?</p>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600">
+                            We use <strong>Can</strong> at the beginning of the sentence to make polite requests and offers in public places.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Place Prepositions -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <h3 class="text-lg font-bold text-montanoTeal mb-3 flex items-center gap-2">
+                            <span>📍</span> Prepositions of Place
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="bg-gray-50 p-2 rounded flex justify-between"><span><strong>on</strong> Main Street</span> <span class="text-montanoTe0al text-xs font-bold">Street location</span></li>
+                            <li class="bg-gray-50 p-2 rounded flex justify-between"><span><strong>next to</strong> the police station</span> <span class="text-xs text-gray-500">Beside</span></li>
+                            <li class="bg-gray-50 p-2 rounded flex justify-between"><span><strong>across from</strong> the bakery</span> <span class="text-xs text-gray-500">Opposite side</span></li>
+                            <li class="bg-gray-50 p-2 rounded flex justify-between"><span><strong>between</strong> the park and school</span> <span class="text-xs text-gray-500">In the middle</span></li>
+                            <li class="bg-gray-50 p-2 rounded flex justify-between"><span><strong>on the corner of</strong> 1st & Main</span> <span class="text-xs text-gray-500">Intersection</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Grammar 2 Section -->
+                <div class="bg-white p-6 rounded-xl border-l-8 border-montanoTeal shadow-sm">
+                    <h2 class="text-2xl font-bold text-montanoTeal mb-3">Grammar 2: Giving Directions</h2>
+                    <p class="text-gray-700 text-sm sm:text-base mb-4">
+                        When someone asks <em>"How can I get to the post office?"</em>, we give directions using movement verbs and prepositions:
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div class="bg-montanoBg p-4 rounded-lg border border-montanoLightBlue">
+                            <span class="text-2xl">⬆️</span>
+                            <h4 class="font-bold text-montanoBlue mt-1">Go straight</h4>
+                            <p class="text-xs text-gray-600 mt-1">Walk forward along the street.</p>
+                        </div>
+                        <div class="bg-montanoBg p-4 rounded-lg border border-montanoLightBlue">
+                            <span class="text-2xl">↗️</span>
+                            <h4 class="font-bold text-montanoBlue mt-1">Turn right</h4>
+                            <p class="text-xs text-gray-600 mt-1">Change direction to your right side.</p>
+                        </div>
+                        <div class="bg-montanoBg p-4 rounded-lg border border-montanoLightBlue">
+                            <span class="text-2xl">↖️</span>
+                            <h4 class="font-bold text-montanoBlue mt-1">Turn left</h4>
+                            <p class="text-xs text-gray-600 mt-1">Change direction to your left side.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= TAB 2: EXAMPLES ================= -->
+            <section id="tab-examples" class="tab-content hidden space-y-6">
+                <div class="bg-white p-5 rounded-xl border-l-8 border-montanoYellow shadow-sm">
+                    <h2 class="text-2xl font-bold text-montanoBlue">Resolved Examples (15 Total: 5 Basic, 5 Intermediate, 5 Advanced)</h2>
+                    <p class="text-gray-600 text-sm mt-1">Review how sentences are structured with Our World 3 concepts.</p>
+                </div>
+
+                <!-- Basic Level Examples -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-montanoTeal flex items-center gap-2">
+                        <span class="bg-montanoOlive text-white text-xs px-2.5 py-1 rounded">Basic Level</span> Requests & Locations
+                    </h3>
+                    
+                    <!-- Example 1 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 1 (Basic): Asking about the supermarket</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> Can you help me? Sure. How can I help? Where's the supermarket?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> It's across from the bakery.</p>
+                    </div>
+                    <!-- Example 2 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 2 (Basic): Locating the post office</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> Can you help me? Sure. How can I help? Where's the post office?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> It's next to the police station.</p>
+                    </div>
+                    <!-- Example 3 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 3 (Basic): Locating the restaurant</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> Can you help me? Sure. How can I help? Where's the restaurant?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> It's behind the movie theater.</p>
+                    </div>
+                    <!-- Example 4 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 4 (Basic): Locating the hospital</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> Can you help me? Sure. How can I help? Where's the hospital?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> It's between the toy store and the park.</p>
+                    </div>
+                    <!-- Example 5 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 5 (Basic): Locating the drugstore</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> Can you help me? Sure. How can I help? Where's the drugstore?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> It's on the corner of Main Street and First Street.</p>
+                    </div>
+                </div>
+
+                <!-- Intermediate Level Examples -->
+                <div class="space-y-4 pt-4">
+                    <h3 class="text-lg font-bold text-montanoTeal flex items-center gap-2">
+                        <span class="bg-montanoTeal text-white text-xs px-2.5 py-1 rounded">Intermediate Level</span> Giving Simple Directions
+                    </h3>
+                    
+                    <!-- Example 6 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 6 (Intermediate): Getting to the stadium</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> How can I get to the stadium?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> Go straight on First Street. Turn right on Green Street. It's on the corner of Green Street and Second Street.</p>
+                    </div>
+                    <!-- Example 7 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 7 (Intermediate): Getting to the post office</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> How can I get to the post office?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> Go straight on First Street. Turn left on Green Street. It's across from the zoo.</p>
+                    </div>
+                    <!-- Example 8 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 8 (Intermediate): Getting to the park</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> How can I get to the park?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> Go straight on White Street. Turn right at the supermarket.</p>
+                    </div>
+                    <!-- Example 9 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 9 (Intermediate): Getting to the museum</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> How can I get to the museum?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> Go straight on Second Street. Turn right on White Street.</p>
+                    </div>
+                    <!-- Example 10 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 10 (Intermediate): Getting to the train station</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Question:</strong> How can I get to the train station?</p>
+                        <p class="text-gray-600 text-sm mt-1 bg-gray-50 p-2 rounded"><strong>Answer:</strong> Go straight on White Street. Turn left at the school.</p>
+                    </div>
+                </div>
+
+                <!-- Advanced Level Examples -->
+                <div class="space-y-4 pt-4">
+                    <h3 class="text-lg font-bold text-montanoTeal flex items-center gap-2">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-1 rounded">Advanced Level</span> Multi-turn Requests & Complex Routing
+                    </h3>
+                    
+                    <!-- Example 11 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 11 (Advanced): Tourist asking for two locations</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Dialogue:</strong><br>
+                        - Can you help me? Sure. How can I help?<br>
+                        - Where's the library?<br>
+                        - It's on First Street, next to the police station. And if you want the museum, go straight and turn right on Second Street!</p>
+                    </div>
+                    <!-- Example 12 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 12 (Advanced): Navigating from school to zoo</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Directions:</strong><br>
+                        - Start at the school on White Street. Go straight, turn left on First Street, walk past the hospital, turn right on Green Street, and the zoo is on your right across from the post office.</p>
+                    </div>
+                    <!-- Example 13 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 13 (Advanced): Finding the toy store</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Directions:</strong><br>
+                        - Go straight on First Street between the library and the mall. Turn right on White Street. The toy store is between the drugstore and the school.</p>
+                    </div>
+                    <!-- Example 14 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 14 (Advanced): Visiting the movie theater</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Directions:</strong><br>
+                        - Walk down Second Street, turn left on White Street. The movie theater is right across from the school and next to the museum.</p>
+                    </div>
+                    <!-- Example 15 -->
+                    <div class="bg-white p-4 rounded-xl border border-montanoLightBlue shadow-sm">
+                        <p class="font-bold text-montanoBlue text-sm">Example 15 (Advanced): Emergency route to hospital</p>
+                        <p class="text-gray-700 text-sm mt-1"><strong>Directions:</strong><br>
+                        - From the stadium, go straight down First Street. The hospital is immediately on your left, across from the park swimming pool.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= TAB 3: EXERCISES ================= -->
+            <section id="tab-exercises" class="tab-content hidden space-y-6">
+                <div class="bg-white p-5 rounded-xl border-l-8 border-montanoTeal shadow-sm">
+                    <h2 class="text-2xl font-bold text-montanoBlue">Practice Exercises (15 Total with Hidden Step-by-Step Solutions)</h2>
+                    <p class="text-gray-600 text-sm mt-1">Test your knowledge! Try solving each problem before clicking "Show Solution".</p>
+                </div>
+
+                <!-- Exercises Container -->
+                <div class="space-y-6">
+                    
+                    <!-- EXERCISE 1 (Basic) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoOlive text-white text-xs px-2.5 py-0.5 rounded font-bold">Basic 1</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the request dialogue:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"Can you help ______? Sure. How can I ______? Where's the supermarket?"</p>
+                        <button onclick="toggleSol('sol-ex1')" id="btn-sol-ex1" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex1" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. First blank: <strong>me</strong> ("Can you help me?")</p>
+                            <p>2. Second blank: <strong>help</strong> ("How can I help?")</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 2 (Basic) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoOlive text-white text-xs px-2.5 py-0.5 rounded font-bold">Basic 2</span>
+                        <p class="font-bold text-gray-800 mt-2">Fill in the preposition for the post office location:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"Where's the post office? It is ______ the police station." (Hint: It is right next to it)</p>
+                        <button onclick="toggleSol('sol-ex2')" id="btn-sol-ex2" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex2" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. Look at the map position relative to the police station.</p>
+                            <p>2. Correct answer: <strong>next to</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 3 (Basic) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoOlive text-white text-xs px-2.5 py-0.5 rounded font-bold">Basic 3</span>
+                        <p class="font-bold text-gray-800 mt-2">Identify the correct street preposition:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"The museum is ______ Main Street."</p>
+                        <button onclick="toggleSol('sol-ex3')" id="btn-sol-ex3" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex3" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. When referring to a specific street name, we use the preposition <strong>on</strong>.</p>
+                            <p>2. Answer: <strong>on</strong> Main Street.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 4 (Basic) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoOlive text-white text-xs px-2.5 py-0.5 rounded font-bold">Basic 4</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the bakery location:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"The toy store is ______ the bakery." (Opposite side of the street)</p>
+                        <button onclick="toggleSol('sol-ex4')" id="btn-sol-ex4" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex4" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. The opposite side is indicated by <strong>across from</strong>.</p>
+                            <p>2. Answer: <strong>across from</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 5 (Basic) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoOlive text-white text-xs px-2.5 py-0.5 rounded font-bold">Basic 5</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the intersection location:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"It's ______ the corner of Main Street and First Street."</p>
+                        <button onclick="toggleSol('sol-ex5')" id="btn-sol-ex5" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex5" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. For corners, the correct phrase is <strong>on</strong>.</p>
+                            <p>2. Answer: <strong>on</strong> the corner of...</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 6 (Intermediate) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoTeal text-white text-xs px-2.5 py-0.5 rounded font-bold">Intermediate 6</span>
+                        <p class="font-bold text-gray-800 mt-2">Fill in the directions to the stadium:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"How can I get to the stadium? Go ______ on First Street. Turn ______ on Green Street."</p>
+                        <button onclick="toggleSol('sol-ex6')" id="btn-sol-ex6" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex6" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. Moving forward along a street: <strong>straight</strong>.</p>
+                            <p>2. Making a directional change: <strong>right</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 7 (Intermediate) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoTeal text-white text-xs px-2.5 py-0.5 rounded font-bold">Intermediate 7</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the direction phrase:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"It's on the corner ______ Green Street and Second Street."</p>
+                        <button onclick="toggleSol('sol-ex7')" id="btn-sol-ex7" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex7" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. We connect two streets on a corner using <strong>and</strong>.</p>
+                            <p>2. Answer: <strong>and</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 8 (Intermediate) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoTeal text-white text-xs px-2.5 py-0.5 rounded font-bold">Intermediate 8</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the direction to the post office:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"Go straight on First Street. Turn ______ on Green Street. It's ______ the zoo."</p>
+                        <button onclick="toggleSol('sol-ex8')" id="btn-sol-ex8" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex8" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. First blank: <strong>left</strong>.</p>
+                            <p>2. Second blank: <strong>across from</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 9 (Intermediate) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoTeal text-white text-xs px-2.5 py-0.5 rounded font-bold">Intermediate 9</span>
+                        <p class="font-bold text-gray-800 mt-2">Fill in the missing words for asking directions:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"______ can I get to the museum?"</p>
+                        <button onclick="toggleSol('sol-ex9')" id="btn-sol-ex9" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex9" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. The question word for asking directions is <strong>How</strong>.</p>
+                            <p>2. Answer: <strong>How</strong> can I get to the museum?</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 10 (Intermediate) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoTeal text-white text-xs px-2.5 py-0.5 rounded font-bold">Intermediate 10</span>
+                        <p class="font-bold text-gray-800 mt-2">Identify the turn direction:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"Turn ______ at the supermarket." (Pointing towards the left arrow ↖️)</p>
+                        <button onclick="toggleSol('sol-ex10')" id="btn-sol-ex10" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex10" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. Symbol ↖️ indicates <strong>left</strong>.</p>
+                            <p>2. Answer: <strong>left</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 11 (Advanced) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Advanced 11</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the full multi-step dialogue:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"Can you ______ me? Sure. How can I help? Where's the train station? It is ______ White Street, next to the school."</p>
+                        <button onclick="toggleSol('sol-ex11')" id="btn-sol-ex11" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex11" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. First blank: <strong>help</strong>.</p>
+                            <p>2. Second blank: <strong>on</strong> (street preposition).</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 12 (Advanced) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Advanced 12</span>
+                        <p class="font-bold text-gray-800 mt-2">Construct directions combining two actions:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"How can I get to the post office? Go ______ on First Street and turn ______ on Green Street."</p>
+                        <button onclick="toggleSol('sol-ex12')" id="btn-sol-ex12" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex12" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. First blank: <strong>straight</strong>.</p>
+                            <p>2. Second blank: <strong>right</strong> (or left depending on map route).</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 13 (Advanced) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Advanced 13</span>
+                        <p class="font-bold text-gray-800 mt-2">Identify complex positioning:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"The park is ______ the toy store ______ the school." (Two prepositions for sandwich position)</p>
+                        <button onclick="toggleSol('sol-ex13')" id="btn-sol-ex13" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex13" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. Structure for being in the middle of two things: <strong>between ... and ...</strong></p>
+                            <p>2. Answer: <strong>between</strong> ... <strong>and</strong> ...</p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 14 (Advanced) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Advanced 14</span>
+                        <p class="font-bold text-gray-800 mt-2">Fix the grammar mistake:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"Where are the museum?" -> Correct the sentence.</p>
+                        <button onclick="toggleSol('sol-ex14')" id="btn-sol-ex14" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex14" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. Museum is singular, so we use "Where's" (Where is).</p>
+                            <p>2. Correct sentence: <strong>Where's the museum?</strong></p>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 15 (Advanced) -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Advanced 15</span>
+                        <p class="font-bold text-gray-800 mt-2">Complete the full navigation instruction:</p>
+                        <p class="text-sm text-gray-700 italic mt-1">"To reach the zoo, go ______ on First Street, turn right ______ Green Street, and it is ______ the post office."</p>
+                        <button onclick="toggleSol('sol-ex15')" id="btn-sol-ex15" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-ex15" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Step-by-step Solution:</p>
+                            <p>1. First blank: <strong>straight</strong>.</p>
+                            <p>2. Second blank: <strong>on</strong>.</p>
+                            <p>3. Third blank: <strong>across from</strong> (or next to).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ================= TAB 4: REFLECTION ================= -->
+            <section id="tab-reflection" class="tab-content hidden space-y-6">
+                <div class="bg-white p-5 rounded-xl border-l-8 border-montanoOlive shadow-sm">
+                    <h2 class="text-2xl font-bold text-montanoBlue">Critical Reflection & Logical Thinking</h2>
+                    <p class="text-gray-600 text-sm mt-1">Open-ended questions to discuss with your classmates and teacher.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="text-2xl">🧭</span>
+                        <h3 class="font-bold text-montanoTeal text-lg mt-2">Question 1: Why are maps important?</h3>
+                        <p class="text-gray-700 text-sm mt-2 leading-relaxed">
+                            Why do you think it is important to know how to give and follow directions correctly when you visit a new city or town? How does it keep us safe?
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="text-2xl">🤝</span>
+                        <h3 class="font-bold text-montanoTeal text-lg mt-2">Question 2: Politeness in Community</h3>
+                        <p class="text-gray-700 text-sm mt-2 leading-relaxed">
+                            When someone asks <em>"Can you help me?"</em>, why is starting with <em>"Sure. How can I help?"</em> a great way to build a friendly and respectful community at Colegio Montano?
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= TAB 5: EVALUATION ================= -->
+            <section id="tab-evaluation" class="tab-content hidden space-y-6">
+                <div class="bg-white p-5 rounded-xl border-l-8 border-montanoBlue shadow-sm">
+                    <h2 class="text-2xl font-bold text-montanoBlue">Formative Evaluation with Hidden Solutions</h2>
+                    <p class="text-gray-600 text-sm mt-1">Review test-style questions to assess your mastery of Unit 1 & 2 grammar.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Eval Question 1 -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Quiz 1</span>
+                        <p class="font-bold text-gray-800 mt-2">Choose the correct question to ask for a place location:</p>
+                        <div class="mt-2 text-sm text-gray-700 space-y-1">
+                            <p>A) Where you are museum?</p>
+                            <p>B) Where's the museum?</p>
+                            <p>C) How museum is?</p>
+                        </div>
+                        <button onclick="toggleSol('sol-eval1')" id="btn-sol-eval1" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-eval1" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Correct Answer: <strong>B) Where's the museum?</strong></p>
+                            <p class="text-xs text-gray-600 mt-1">Explanation: "Where's" is the contraction of "Where is", which is the correct structure for singular places.</p>
+                        </div>
+                    </div>
+
+                    <!-- Eval Question 2 -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Quiz 2</span>
+                        <p class="font-bold text-gray-800 mt-2">If a building is situated directly between the park and the school, which preposition describes it?</p>
+                        <div class="mt-2 text-sm text-gray-700 space-y-1">
+                            <p>A) across from</p>
+                            <p>B) between</p>
+                            <p>C) on</p>
+                        </div>
+                        <button onclick="toggleSol('sol-eval2')" id="btn-sol-eval2" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-eval2" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Correct Answer: <strong>B) between</strong></p>
+                            <p class="text-xs text-gray-600 mt-1">Explanation: "Between" is used when an object is in the middle of two other locations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Eval Question 3 -->
+                    <div class="bg-white p-5 rounded-xl border-2 border-montanoLightBlue shadow-sm">
+                        <span class="bg-montanoBlue text-white text-xs px-2.5 py-0.5 rounded font-bold">Quiz 3</span>
+                        <p class="font-bold text-gray-800 mt-2">Which direction command tells you to walk forward along a street?</p>
+                        <div class="mt-2 text-sm text-gray-700 space-y-1">
+                            <p>A) Turn left</p>
+                            <p>B) Go straight</p>
+                            <p>C) Turn right</p>
+                        </div>
+                        <button onclick="toggleSol('sol-eval3')" id="btn-sol-eval3" class="mt-3 bg-montanoBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 transition">Show Solution</button>
+                        <div id="sol-eval3" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-800">
+                            <p class="font-bold text-montanoBlue">Correct Answer: <strong>B) Go straight</strong></p>
+                            <p class="text-xs text-gray-600 mt-1">Explanation: "Go straight" means to move forward in the same direction.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-white p-3 sm:p-4 border-t-2 border-gray-200 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600 gap-2">
+            <p>🏫 <strong>Colegio Montano</strong> — Interactive Digital Learning Board</p>
+            <p>Designed for Canvas Education Integration • Our World 3 NatGeo</p>
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Reset all tab buttons styling
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'text-montanoBlue', 'shadow');
+                btn.classList.add('bg-montanoTeal', 'text-white');
+            });
+
+            // Show selected tab
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            // Highlight active button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-montanoTeal', 'text-white');
+            activeBtn.classList.add('bg-white', 'text-montanoBlue', 'shadow');
+        }
+
+        // Toggle Solution Visibility
+        function toggleSol(solId) {
+            const solDiv = document.getElementById(solId);
+            const btn = document.getElementById('btn-' + solId);
+
+            if (solDiv.classList.contains('hidden')) {
+                solDiv.classList.remove('hidden');
+                btn.textContent = 'Hide Solution';
+                btn.classList.remove('bg-montanoBlue', 'hover:bg-sky-700');
+                btn.classList.add('bg-montanoTeal', 'hover:bg-teal-700');
+            } else {
+                solDiv.classList.add('hidden');
+                btn.textContent = 'Show Solution';
+                btn.classList.remove('bg-montanoTeal', 'hover:bg-teal-700');
+                btn.classList.add('bg-montanoBlue', 'hover:bg-sky-700');
+            }
+        }
+
+        // Fullscreen Toggle API
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
